@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Story</title>
+    <style>
+        body {
+            background-color: #ff00bb; /* Slightly lighter background color */
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+        }
+       
+
+        #huzzahText {
+            font-family: 'Courier New', Courier, monospace;
+            position: absolute;
+            font-display: courier new;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            text-align: center;
+            color: #333;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .background-heart {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(5); /* Increase scale to fill the screen */
+            animation: pulse 2s infinite; /* Pulsating animation */
+            color: rgba(255, 255, 255, 0.5); /* Translucent white heart color */
+            font-size: 6em; /* Larger font size */
+            z-index: -1; /* Place it behind other elements */
+        }
+
+        .button-container {
+            position: absolute;
+            top: 69%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .moving-button {
+            transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out; /* Faster transition for transform */
+            padding: 15px 20px; /* Slightly larger padding for a larger button */
+            border-radius: 20px; /* Rounded corners */
+            background-color: pink;
+            color: #c70039; /* Deep pink text color */
+            border: none;
+            cursor: pointer;
+            opacity: 0; /* Initially hidden */
+        }
+
+        .moving-button.visible {
+            opacity: 1; /* Visible state */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(5);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(5.5);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(5);
+            }
+        }
+
+        .story-text {
+            font-family: 'Courier New', Courier, monospace;
+            position: absolute;
+            font-display: courier new;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            text-align: center;
+            color: #333;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-heart">❤</div>
+    <div class="story-text">a message from rachit:</div>
+    <div class="button-container">
+        <button id="next" class="moving-button visible">next</button>
+        <button id="yes" class="moving-button">yes</button>
+        <button id="no" class="moving-button">no</button>
+    </div>
+    <div id="huzzahText" class="hidden">Huzzah!</div>
+    <script src="index.js"></script>
+</body>
+</html>
